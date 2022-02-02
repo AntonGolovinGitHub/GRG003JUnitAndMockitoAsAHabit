@@ -10,6 +10,6 @@ package com.junitandmockitoasahabit.data;
  */
 public class JUnitAndMockitoAsAHabit_Quote {
     
-    public 
+    
     
 }
