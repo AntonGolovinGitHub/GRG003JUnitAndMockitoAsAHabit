@@ -4,20 +4,26 @@
  */
 package com.junitandmockitoasahabit.view;
 
-import com.junitandmockitoasahabit.controller.JUnitAndMockitoAsAHabit_Controller;
+import com.junitandmockitoasahabit.controller.QuoteController;
 
 /**
  *
  * @author AntonGolovin
  */
-public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
+public class QuoteWindowView extends javax.swing.JFrame {
 
-    private JUnitAndMockitoAsAHabit_Controller controller = new JUnitAndMockitoAsAHabit_Controller();
+    private QuoteController controller; 
     
     /**
-     * Creates new form GRG003JUnitAndMockitoAsAHabit
+     * Creates new form QuoteWindowView
      */
-    public GRG003JUnitAndMockitoAsAHabit() {
+    public QuoteWindowView() {
+        try {
+            this.controller = new QuoteController(this);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.exit(0);
+        }
         initComponents();
     }
 
@@ -33,9 +39,9 @@ public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
         quoteTextAreaScrollPane = new javax.swing.JScrollPane();
         quoteTextArea = new javax.swing.JTextArea();
         randomQuoteButton = new javax.swing.JButton();
-        roundRobinQuoteButton = new javax.swing.JButton();
-        resetQuoteButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
+        exitAppButton = new javax.swing.JButton();
+        roundrobinQuoteButton = new javax.swing.JButton();
+        resetQuotesButton = new javax.swing.JButton();
         quoteLocationWithinQuotesProgressBar = new javax.swing.JProgressBar();
         aboutButton = new javax.swing.JButton();
         appLogoImage = new javax.swing.JPanel();
@@ -54,22 +60,32 @@ public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
         quoteTextAreaScrollPane.setViewportView(quoteTextArea);
 
         randomQuoteButton.setText("Show Random Quote");
-
-        roundRobinQuoteButton.setText("Exit App");
-        roundRobinQuoteButton.addActionListener(new java.awt.event.ActionListener() {
+        randomQuoteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roundRobinQuoteButtonActionPerformed(evt);
+                randomQuoteButtonActionPerformed(evt);
             }
         });
 
-        resetQuoteButton.setText("Show RoundRobin Quote");
-        resetQuoteButton.addActionListener(new java.awt.event.ActionListener() {
+        exitAppButton.setText("Exit App");
+        exitAppButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetQuoteButtonActionPerformed(evt);
+                exitAppButtonActionPerformed(evt);
             }
         });
 
-        exitButton.setText("Reset Quotes");
+        roundrobinQuoteButton.setText("Show RoundRobin Quote");
+        roundrobinQuoteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roundrobinQuoteButtonActionPerformed(evt);
+            }
+        });
+
+        resetQuotesButton.setText("Reset Quotes");
+        resetQuotesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetQuotesButtonActionPerformed(evt);
+            }
+        });
 
         aboutButton.setText("About");
         aboutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,9 +118,9 @@ public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(randomQuoteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(roundRobinQuoteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(resetQuoteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                            .addComponent(exitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(exitAppButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(roundrobinQuoteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(resetQuotesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(appLogoImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(aboutButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -117,15 +133,15 @@ public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(randomQuoteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(resetQuoteButton)
+                        .addComponent(roundrobinQuoteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exitButton)
+                        .addComponent(resetQuotesButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(appLogoImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(aboutButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roundRobinQuoteButton))
+                        .addComponent(exitAppButton))
                     .addComponent(quoteTextAreaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(quoteLocationWithinQuotesProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,18 +151,27 @@ public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void resetQuoteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetQuoteButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resetQuoteButtonActionPerformed
+    private void roundrobinQuoteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundrobinQuoteButtonActionPerformed
+        this.controller.roundrobin();
+    }//GEN-LAST:event_roundrobinQuoteButtonActionPerformed
 
     private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
         // TODO add your handling code here:
         this.quoteTextArea.setText("GRG003JUnitAndMockitoAsAHabit Learning App...");
     }//GEN-LAST:event_aboutButtonActionPerformed
 
-    private void roundRobinQuoteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundRobinQuoteButtonActionPerformed
+    private void exitAppButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitAppButtonActionPerformed
+        this.controller.stop();
         System.exit(0);        // TODO add your handling code here:
-    }//GEN-LAST:event_roundRobinQuoteButtonActionPerformed
+    }//GEN-LAST:event_exitAppButtonActionPerformed
+
+    private void randomQuoteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomQuoteButtonActionPerformed
+         this.controller.random();
+    }//GEN-LAST:event_randomQuoteButtonActionPerformed
+
+    private void resetQuotesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetQuotesButtonActionPerformed
+        this.controller.reset();
+    }//GEN-LAST:event_resetQuotesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,33 +190,44 @@ public class GRG003JUnitAndMockitoAsAHabit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GRG003JUnitAndMockitoAsAHabit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuoteWindowView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GRG003JUnitAndMockitoAsAHabit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuoteWindowView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GRG003JUnitAndMockitoAsAHabit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuoteWindowView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GRG003JUnitAndMockitoAsAHabit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuoteWindowView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GRG003JUnitAndMockitoAsAHabit().setVisible(true);
+                new QuoteWindowView().setVisible(true);
             }
         });
+    }
+    
+    public void setQuoteTextArea(String message) {
+        quoteTextArea.setText(message);
+    }
+    
+    public void setQuoteLocationWithinQuotesProgressBar(int min, int max, int value) {
+        this.quoteLocationWithinQuotesProgressBar.setMinimum(min);
+        this.quoteLocationWithinQuotesProgressBar.setMaximum(max);
+        this.quoteLocationWithinQuotesProgressBar.setValue(value);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
     private javax.swing.JPanel appLogoImage;
-    private javax.swing.JButton exitButton;
+    private javax.swing.JButton exitAppButton;
     private javax.swing.JProgressBar quoteLocationWithinQuotesProgressBar;
     private javax.swing.JTextArea quoteTextArea;
     private javax.swing.JScrollPane quoteTextAreaScrollPane;
     private javax.swing.JButton randomQuoteButton;
-    private javax.swing.JButton resetQuoteButton;
-    private javax.swing.JButton roundRobinQuoteButton;
+    private javax.swing.JButton resetQuotesButton;
+    private javax.swing.JButton roundrobinQuoteButton;
     // End of variables declaration//GEN-END:variables
 }

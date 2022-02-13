@@ -34,9 +34,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="randomQuoteButton" max="32767" attributes="0"/>
-                          <Component id="roundRobinQuoteButton" max="32767" attributes="0"/>
-                          <Component id="resetQuoteButton" alignment="0" pref="169" max="32767" attributes="0"/>
-                          <Component id="exitButton" alignment="1" max="32767" attributes="0"/>
+                          <Component id="exitAppButton" max="32767" attributes="0"/>
+                          <Component id="roundrobinQuoteButton" alignment="0" pref="169" max="32767" attributes="0"/>
+                          <Component id="resetQuotesButton" alignment="1" max="32767" attributes="0"/>
                           <Component id="appLogoImage" max="32767" attributes="0"/>
                           <Component id="aboutButton" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -54,15 +54,15 @@
                   <Group type="102" attributes="0">
                       <Component id="randomQuoteButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="resetQuoteButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="roundrobinQuoteButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="exitButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="resetQuotesButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="appLogoImage" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="aboutButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="roundRobinQuoteButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="exitAppButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="quoteTextAreaScrollPane" min="-2" pref="258" max="-2" attributes="0"/>
               </Group>
@@ -111,27 +111,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Show Random Quote"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="randomQuoteButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="roundRobinQuoteButton">
+    <Component class="javax.swing.JButton" name="exitAppButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit App"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundRobinQuoteButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitAppButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="resetQuoteButton">
+    <Component class="javax.swing.JButton" name="roundrobinQuoteButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show RoundRobin Quote"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetQuoteButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roundrobinQuoteButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="exitButton">
+    <Component class="javax.swing.JButton" name="resetQuotesButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reset Quotes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetQuotesButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JProgressBar" name="quoteLocationWithinQuotesProgressBar">
     </Component>
